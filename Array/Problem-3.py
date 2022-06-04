@@ -17,7 +17,7 @@ arr=[ 7 ,10, 4 ,3, 20 ,15]
 n=len(arr)
 k=3
 
-#Solution 1 using Sort Function
+#Solution 1 using Sort Function O(nlogn)
 
 # def findKthMin(arr,n,k):
 #     arr.sort()

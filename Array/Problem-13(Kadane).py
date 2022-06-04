@@ -24,8 +24,6 @@ sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/input.txt
 #     pre[i]=pre[i-1]+arr[i]
 # for i to n:
 #     for j=i to n:
-#         s=0
-#         for k=i to j:
 #             s=pref[j]-pre[i-1]
 #         mmaxSum=max(maxSum,s)
 

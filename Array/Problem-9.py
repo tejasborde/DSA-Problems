@@ -28,8 +28,8 @@ def minThemaxDiffBetwheight(arr,n,k):
     res=maximum-minimum
 
     for i in range(1,n):
-        maximum=max(arr[i-1]+k,arr[n-1]-k)
         minimum=min(arr[i]-k,arr[0]+k)
+        maximum=max(arr[i-1]+k,arr[n-1]-k)
         
         res=min(res,maximum-minimum)
     return res 

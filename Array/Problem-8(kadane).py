@@ -6,10 +6,11 @@ sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/input.txt
 
 #Kadane's Algorithm 
 
-
+arr=[-1,-2,-3,-4]
+n=len(arr)
 
 #1st solution o(n^3)
-# for i=0to n:
+# for i=0 to n:
 #     for j=i to n:
 #         s=0
 #         for k=i to j:
@@ -24,14 +25,11 @@ sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/input.txt
 #     pre[i]=pre[i-1]+arr[i]
 # for i to n:
 #     for j=i to n:
-#         s=0
-#         for k=i to j:
 #             s=pref[j]-pre[i-1]
 #         mmaxSum=max(maxSum,s)
 
 #3rd Solution O(n) (Kadane's Algorithm)
-arr=[-1,-2,-3,-4]
-n=len(arr)
+
 
 def kadane(arr,n):
     maxSum=-999999
