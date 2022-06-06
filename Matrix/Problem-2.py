@@ -43,28 +43,41 @@ x=3
 #ans
 # O(m+n)-TC
 
-def searchInmatrix(mat,r,c,x):
-    i=0
-    j=c-1
+# def searchInmatrix(mat,r,c,x):
+#     i=0
+#     j=c-1
 
-    while(i<r and j>=0):
-        if(mat[i][j]==x):
-            return 1
-        elif(mat[i][j]<x):
-            i+=1
-        elif(mat[i][j]>x):
-            j-=1
-    return 0
-
-
-print(searchInmatrix(mat, r, c, x))
+#     while(i<r and j>=0):
+#         if(mat[i][j]==x):
+#             return 1
+#         elif(mat[i][j]<x):
+#             i+=1
+#         elif(mat[i][j]>x):
+#             j-=1
+#     return 0
 
 
+# print(searchInmatrix(mat, r, c, x))
 
 
 
+s="I AM AWESOME"
 
+def reverseString(s):
+    # arr=[]
+    # s=s[::-1]
+    # for i in s:
+    #     if(i!=" " and i not in arr):
+    #         arr.append(i)
+    # arr="".join(arr)
+    # return arr
+    ans=""
+    s=s[::-1]
+    for i in s:
+        if(i!=" " and ans.count(i)==0):
+            ans+=i
+    return ans
 
-
+print(reverseString(s))
 
 

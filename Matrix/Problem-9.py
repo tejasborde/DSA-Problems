@@ -36,7 +36,6 @@ def KthElementinSortedArray(mat,r,c,k):
 
     while(low<=high):
         mid=(low+high)//2
-    
         NumbersLessThanNumber=0
         for i in range(r):
             NumbersLessThanNumber+=countNumbersLessThanNumber(mat[i],mid)
