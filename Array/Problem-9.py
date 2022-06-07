@@ -12,8 +12,8 @@
 # the largest and the smallest is 8-3 = 5.
 
 import sys
-sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/output.txt', 'w')
-sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/input.txt', 'r')
+sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/output.txt', 'w')
+sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/input.txt', 'r')
 
 
 arr=[1, 5, 8, 10]

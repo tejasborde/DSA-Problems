@@ -1,6 +1,6 @@
 import sys
-sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/output.txt', 'w')
-sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/input.txt', 'r')
+sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/output.txt', 'w')
+sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/input.txt', 'r')
 
 #Move all the negative elements to one side of the array 
 # Input: -12, 11, -13, -5, 6, -7, 5, -3, -6

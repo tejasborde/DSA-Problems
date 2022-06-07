@@ -1,6 +1,6 @@
 import sys
-sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/output.txt', 'w')
-sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/input.txt', 'r')
+sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/output.txt', 'w')
+sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/input.txt', 'r')
 
 # Write a Program to check whether a string 
 # is a valid shuffle of two strings or not

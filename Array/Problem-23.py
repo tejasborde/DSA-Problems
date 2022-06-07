@@ -7,8 +7,8 @@
 # is [6, -3, -10] which gives product as 180.
 
 import sys
-sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/output.txt', 'w')
-sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/input.txt', 'r')
+sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/output.txt', 'w')
+sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/input.txt', 'r')
 
 arr=[ 6, -3, -10, 0, 2]
 n=len(arr)
