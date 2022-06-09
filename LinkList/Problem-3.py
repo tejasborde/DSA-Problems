@@ -2,7 +2,7 @@ import sys
 sys.stdout = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/output.txt', 'w')
 sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet/input.txt', 'r')
 
-
+#Detect Loop in LinkList
 
 class Node :
     def __init__(self, data) :

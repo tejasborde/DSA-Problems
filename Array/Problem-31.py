@@ -33,7 +33,7 @@ sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet
 
 #===========================================================================
 
-#Solution 2 :   TC-O(n) and CS-O(1)
+#Solution 2 :   TC-O(n) and SC-O(1)
 #Two Pointer approach - Sliding window technique
 
 # def smallestSubArrayLengthwithSumGreaterThanX(arr,n,x):

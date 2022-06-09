@@ -110,14 +110,6 @@ class LinkList:
 
 
 
-
-
-
-
-
-
-
-
 first = LinkList()
 first.insertNodeatEnd(7)
 first.insertNodeatEnd(7)

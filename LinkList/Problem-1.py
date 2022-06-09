@@ -52,24 +52,6 @@ class LinkedList:
         head.next=None
 
         return remainingList
-
-    def reverseBygroupsOfSizeK(self,head,k):
-        if(head==None):
-            return head
-        cur=head
-        next=None
-        prev=None
-        count=0
-        while(cur is not None and count < k):
-            next=cur.next 
-            cur.next=prev
-            prev=cur 
-            cur=next
-            count+=1
-        
-        if(next!=None):
-            head.next=self.reverseBygroupsOfSizeK(next, k)
-        return prev
     
         
     

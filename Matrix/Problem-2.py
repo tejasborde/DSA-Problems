@@ -61,23 +61,4 @@ x=3
 
 
 
-s="I AM AWESOME"
-
-def reverseString(s):
-    # arr=[]
-    # s=s[::-1]
-    # for i in s:
-    #     if(i!=" " and i not in arr):
-    #         arr.append(i)
-    # arr="".join(arr)
-    # return arr
-    ans=""
-    s=s[::-1]
-    for i in s:
-        if(i!=" " and ans.count(i)==0):
-            ans+=i
-    return ans
-
-print(reverseString(s))
-
 

@@ -4,7 +4,7 @@ sys.stdin = open('E:/Computer Engineering/SE COMP 2020/Data Structures/DSA-Sheet
 
 
 
-
+# Find Kth min Element  in row wise sorted matrix
 
 mat= [[10, 20, 30, 40], 
     [15, 25, 35, 45], 

@@ -51,9 +51,9 @@ def findMedianOfSortedArrays(a,b,m,n):
             else:
                 return max(l1,l2)
         elif(l1>r2):
-            high=cut1-1
+            high=mid-1
         else:
-            low=cut1+1
+            low=mid+1
     return 0
 
 
