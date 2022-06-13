@@ -1,48 +1,39 @@
-# https://practice.geeksforgeeks.org/problems/median-of-bst/1/#
+#https://practice.geeksforgeeks.org/problems/brothers-from-different-root/1
 
 
-#Get Median Of BST
+#Count Pairs with Sum K from Two BST
+class Node:
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
 
-def countNodes(root,count):
-    if(root):
-        countNodes(root.left,count)
-        count[0]+=1
-        countNodes(root.right,count)
-
-def getMedianNodes(root,medianNodes,k,currentIndex,even=False):
-    if(root):
-        getMedianNodes(root.left,medianNodes,k,currentIndex,even)
-        if(even and (currentIndex[0]==k or currentIndex[0]==k-1)):
-            medianNodes.append(root.data)
-        elif(currentIndex==k):
-            medianNodes.append(root.data)
+class Solution:
+    def find(self,root,value):
+        if(root):
+            if(root.data==value):
+                return True
+            x=False
+            y=False
+            
+            if(root.data<value):
+                x=self.find(root.right,value)
+            elif(root.data>value):
+                y=self.find(root.left,value)
+            return x or y
+        return False
+    
+    def inOrderTree(self,root1,root2,count,x):
+        if(root1):
+            self.inOrderTree(root1.left,root2,count,x)
+            if(self.find(root2,x-root1.data)):
+                count[0]+=1
+            self.inOrderTree(root1.right,root2,count,x)
+    
+    def countPairs(self, root1, root2, x): 
         
-        currentIndex[0]+=1
-        getMedianNodes(root.right,medianNodes,k,currentIndex,even)
-
-def findMedian(root):
-    nodeCount=[0]
-    countNodes(root,nodeCount)
-
-
-    even=False
-    if(nodeCount[0]%2==0):
-        even=True
-    
-    medianNodes=[]
-
-    k=nodeCount[0]/2
-    currentIndex=[0]
-
-    getMedianNodes(root, medianNodes, k, currentIndex,even)
-
-    size=len(medianNodes)
-
-    sum=0
-    for i in medianNodes:
-        sum+=i 
-    
-    median=sum/size 
-    return median 
-
+        count=[0]
+        self.inOrderTree(root1,root2,count,x)
+        
+        return count[0]
         

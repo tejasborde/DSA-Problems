@@ -1,22 +1,20 @@
-# https://practice.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/1#
+# https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
 
 class Node:
     def __init__(self, val):
-        self.right = None
         self.data = val
         self.left = None
+        self.right = None
 
+# return the Kth largest element in the given BST rooted at 'root'
 class Solution:
-    # Return the Kth smallest element in the given BST 
     def inOrderOfTree(self,root,ans):
         if(root):
             self.inOrderOfTree(root.left,ans)
             ans.append(root.data)
             self.inOrderOfTree(root.right,ans)
-            
-    def KthSmallestElement(self, root, K): 
+    def kthLargest(self,root, k):
         ans=[]
         self.inOrderOfTree(root,ans)
-        if(len(ans)<K):
-            return -1
-        return ans[K-1]
+        
+        return ans[-k]

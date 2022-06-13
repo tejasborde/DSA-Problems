@@ -1,20 +1,14 @@
-# https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+#Merge Two Balanced BSTs
 
-class Node:
-    def __init__(self, val):
-        self.data = val
-        self.left = None
-        self.right = None
 
-# return the Kth largest element in the given BST rooted at 'root'
-class Solution:
-    def inOrderOfTree(self,root,ans):
-        if(root):
-            self.inOrderOfTree(root.left,ans)
-            ans.append(root.data)
-            self.inOrderOfTree(root.right,ans)
-    def kthLargest(self,root, k):
-        ans=[]
-        self.inOrderOfTree(root,ans)
-        
-        return ans[-k]
+#Solution 1
+#Insert nodes of one BST into the another BST
+#For optmization we can insert nodes of smaller BST into the bigger BST
+
+
+
+#Solution 2
+#get inorder of both the trees
+#merge them into single array 
+#sort the array
+#use the algorithm of convert sorted array to BST (Problem-10.py of BST)
