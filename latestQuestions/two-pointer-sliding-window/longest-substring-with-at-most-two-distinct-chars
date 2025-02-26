@@ -1,0 +1,21 @@
+def lengthOfLongestSubstring(s: str) -> int:
+    charMap = {}
+    left = 0
+    right = 0
+    maxLength = 0
+
+    while(right< len(s)):
+        charMap[s[right]] = charMap.get(s[right], 0) + 1
+
+        if len(charMap.keys()) > 2:
+            leftCharCount = charMap[s[left]]
+            if leftCharCount == 1:
+                charMap.pop(s[left])
+            else:
+                charMap[s[left]] = leftCharCount - 1
+            left+=1
+        if len(charMap.keys()) <= 2:
+            maxLength = max(maxLength, right - left + 1)
+        right += 1    
+    
+    return maxLength
