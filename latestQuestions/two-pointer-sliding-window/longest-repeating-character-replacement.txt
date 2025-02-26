@@ -1,0 +1,21 @@
+https://leetcode.com/problems/longest-repeating-character-replacement/description/
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        left,right = 0,0
+        maxLength = 0
+        charMap ={}
+        maxFreq = 0
+        
+        while(right < len(s)):
+            charMap[s[right]] = charMap.get(s[right], 0) + 1
+            maxFreq = max(maxFreq, charMap[s[right]])
+
+            #Invalid window check..make it valid window to proceed for maxLength check
+            while (right - left + 1) - maxFreq > k:
+                charMap[s[left]] -= 1
+                left+=1
+            
+            maxLength = max(maxLength, right - left + 1)
+            right += 1    
+    
+        return maxLength
