@@ -1,0 +1,23 @@
+https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1
+
+def longestKSubstr(s, k):
+      charMap = {}
+      left = 0
+      right = 0
+      maxLength = 0
+  
+      while(right< len(s)):
+          charMap[s[right]] = charMap.get(s[right], 0) + 1
+  
+          if len(charMap.keys()) > k:
+              leftCharCount = charMap[s[left]]
+              if leftCharCount == 1:
+                  charMap.pop(s[left])
+              else:
+                  charMap[s[left]] = leftCharCount - 1
+              left+=1
+          if len(charMap.keys()) == k:
+              maxLength = max(maxLength, right - left + 1)
+          right += 1    
+      
+      return -1 if maxLength == 0 else maxLength
