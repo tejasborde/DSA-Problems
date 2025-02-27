@@ -1,0 +1,39 @@
+https://leetcode.com/problems/edit-distance/
+
+Recursive Solution :
+def editDistanceUtil(w1,w2,i,j):
+        if i < 0:
+            return j + 1
+        if j < 0:
+            return i + 1
+
+        if w1[i] == w2[j]:
+            return editDistanceUtil(w1,w2,i-1,j-1)
+        
+        return 1 + min(editDistanceUtil(w1,w2,i-1,j-1), min(editDistanceUtil(w1,w2,i,j-1),editDistanceUtil(w1,w2,i-1,j)))
+
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        return editDistanceUtil(word1, word2, len(word1)-1, len(word2)-1)
+
+
+Memoization:
+def editDistance(w1,w2,i,j,dp):
+    if i < 0:
+        return j + 1
+    if j < 0:
+        return i + 1
+    if dp[i][j] != -1:
+        return dp[i][j]
+
+    if w1[i] == w2[j]:
+        dp[i][j] = editDistance(w1,w2,i-1,j-1,dp)
+    else:
+        dp[i][j] = 1 + min(editDistance(w1,w2,i-1,j-1,dp), min(editDistance(w1,w2,i,j-1,dp),editDistance(w1,w2,i-1,j,dp)))
+
+    return dp[i][j]
+
+class Solution:
+    def minDistance(self, word1: str, word2: str) -> int:
+        dp = [[-1 for _ in range(len(word2))] for _ in range(len(word1))]
+        return editDistance(word1, word2, len(word1)-1, len(word2)-1,dp)
