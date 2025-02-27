@@ -1,0 +1,22 @@
+https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
+
+class Solution:
+    def longestSubarray(self, nums: List[int]) -> int:
+        left,right = 0,0
+        maxLength = 0
+        eleDeleted = 0
+
+        while(right < len(nums)):
+            if nums[right] != 1:
+                eleDeleted += 1
+           
+            if eleDeleted > 1:
+                if nums[left] != 1:
+                    eleDeleted-=1
+                left+=1
+            
+            if eleDeleted <= 1:
+                maxLength = max(maxLength, right - left)
+            right += 1
+        
+        return maxLength
