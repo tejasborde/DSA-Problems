@@ -1,0 +1,40 @@
+https://leetcode.com/problems/3sum/
+
+Better O(N^2) Solution:
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        
+        ans = set()
+        for i in range(len(nums)):
+            hashSet = set()
+            for j in range(i+1, len(nums)):
+                third = -(nums[i]+nums[j])
+                if third in hashSet:
+                    triplet = [nums[i],nums[j],third]
+                    triplet.sort()
+                    ans.add(tuple(triplet))
+                hashSet.add(nums[j])
+        return list(ans)
+
+Best Solution using Two Pointer:
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        ans = set()
+        for i in range(len(nums)):
+            left = i+1
+            right = len(nums) - 1
+            
+            while(left<right):
+                sum = nums[i] + nums[left] + nums[right]
+                if sum == 0:
+                    triplet = [nums[i], nums[left], nums[right]]
+                    triplet.sort()
+                    ans.add(tuple(triplet))
+                    left+=1
+                    right-=1
+                elif sum < 0:
+                    left+=1
+                else:
+                    right-=1
+        return list(ans)
