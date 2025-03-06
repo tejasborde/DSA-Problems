@@ -1,0 +1,19 @@
+class Solution:
+    def dfsUtil(self, node, adj, visited, dfs):
+        
+        visited[node] = True
+        dfs.append(node)
+        
+        for neighbour in adj[node]:
+            if not visited[neighbour]:
+                self.dfsUtil(neighbour, adj, visited, dfs)
+
+        
+        
+    #Function to return a list containing the DFS traversal of the graph.
+    def dfsOfGraph(self, adj):
+        visited = [False for i in range(len(adj))]
+        dfs = []
+        
+        self.dfsUtil(0, adj, visited, dfs)
+        return dfs
