@@ -1,0 +1,37 @@
+Number of Provinces using DFS. Can be done using BFS also
+
+def convertAdjacencyMatrixToList(matrix):
+    adj = []
+    for i in range(len(matrix)):
+        curNodeList = []
+        for j in range(len(matrix[i])):
+            if i!=j and matrix[i][j] == 1:
+                curNodeList.append(j)
+        adj.append(curNodeList)
+    return adj
+
+
+class Solution:
+    def dfsUtil(self, node, adj, visited):  
+        visited[node] = True        
+        for neighbour in adj[node]:
+            if not visited[neighbour]:
+                self.dfsUtil(neighbour, adj, visited)
+
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        adj = convertAdjacencyMatrixToList(isConnected)
+        visited = [False for i in range(len(isConnected))] 
+        provinces = 0
+
+        for i in range(len(adj)):
+            if not visited[i]:
+                provinces+=1
+                self.dfsUtil(i, adj, visited)
+        
+        return provinces
+
+Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+Output: 2
+
+Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
