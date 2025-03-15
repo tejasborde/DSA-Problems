@@ -1,0 +1,25 @@
+https://leetcode.com/problems/flood-fill/
+
+import copy
+class Solution:
+    delta_row = [-1, 0 , 1 , 0]
+    delta_col = [0, -1, 0, 1]
+
+    def dfs(self, row, col, ans , image, initial_color, new_color):
+        ans[row][col] = new_color
+
+        m = len(image)
+        n = len(image[0])
+
+        for delta_index in range(len(self.delta_row)):
+            new_row = row + self.delta_row[delta_index]
+            new_col = col + self.delta_col[delta_index]
+
+            if new_row >=0 and new_row < m and new_col >= 0 and new_col < n and image[new_row][new_col] == initial_color and ans[new_row][new_col] != new_color:
+                self.dfs(new_row, new_col, ans, image, initial_color, new_color)
+        
+
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        ans = copy.deepcopy(image)
+        self.dfs(sr, sc, ans, image, image[sr][sc], color)
+        return ans
