@@ -1,0 +1,31 @@
+https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+
+from typing import List
+class Solution:
+    def bfs(self, adj, start, visited):
+        queue = []
+        queue.append([start, -1])
+        visited[start] = True
+        
+        while queue:
+            node, parent = queue.pop(0)
+            
+            for neighbour in adj[node]:
+                if not visited[neighbour]:
+                    queue.append([neighbour, node])
+                    visited[neighbour] = True
+                elif parent != neighbour:
+                    return True
+        
+        return False
+        
+        
+    #Function to detect cycle in an undirected graph.
+	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
+        visited = [False for _ in range(V)]
+
+        for i in range(V):
+            if not visited[i]:
+                if self.bfs(adj, i, visited):
+                    return True
+        return False
