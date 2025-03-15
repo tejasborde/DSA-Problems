@@ -1,0 +1,40 @@
+https://leetcode.com/problems/detect-cycles-in-2d-grid/
+
+class Solution:
+    def containsCycle(self, grid: List[List[str]]) -> bool:
+        m = len(grid)
+        n = len(grid[0])
+
+        visited  = [[False for _ in range(n)] for _ in range(m)]
+        
+        def bfs(sr, sc):
+            queue = []
+            queue.append([sr, sc , -1, -1])
+            visited[sr][sc] = True
+
+            delta_row = [-1, 0, 1, 0]
+            delta_col = [0, 1, 0, -1]
+            
+            while queue:
+                row, col, parent_row, parent_col = queue.pop(0)
+
+                for delta_idx in range(4):
+                    new_row = row + delta_row[delta_idx]
+                    new_col = col + delta_col[delta_idx]
+
+                    if 0 <= new_row < m and 0 <= new_col < n and grid[row][col] == grid[new_row][new_col]:
+                        if not visited[new_row][new_col]:
+                            queue.append([new_row, new_col, row, col])
+                            visited[new_row][new_col] = True
+                        elif (new_row, new_col) != (parent_row, parent_col): #Parent different => Cycle detected
+                            return True
+            return False
+        
+
+        for i in range(m):
+            for j in range(n):
+                if not visited[i][j]:
+                    if bfs(i,j):
+                        return True
+        return False
+
