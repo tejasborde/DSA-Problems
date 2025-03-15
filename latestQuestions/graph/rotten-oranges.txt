@@ -1,0 +1,49 @@
+https://leetcode.com/problems/rotting-oranges/
+
+import copy
+
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        m = len(grid)
+        n = len(grid[0])
+
+        visited  = copy.deepcopy(grid)
+        queue = []
+        count_fresh = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 2:
+                    queue.append([[i,j],0])
+                else:
+                    visited[i][j] = 0
+
+                if grid[i][j] == 1:
+                    count_fresh += 1
+        
+        #So now the queue has all the rotten oranges
+        #Now we need to check for the oranges adjacent to rotten oranges which will get rotten in unit time using bfs
+        max_time = 0
+        fresh_to_rotten = 0
+        while queue:
+            rotten_orange = queue.pop(0)
+            row , col = rotten_orange[0]
+            time = rotten_orange[1]
+            max_time = max(max_time , time)
+
+
+            delta_row = [-1, 0 , 1 , 0]
+            delta_col = [0, -1, 0, 1]
+
+            for delta_idx in range(4):
+                new_row = row + delta_row[delta_idx]
+                new_col = col + delta_col[delta_idx]
+
+                if new_row >= 0 and new_row < m and new_col >= 0 and new_col < n and visited[new_row][new_col] != 2  and grid[new_row][new_col] == 1:
+                    queue.append([[new_row, new_col], time + 1])
+                    visited[new_row][new_col] = 2
+                    fresh_to_rotten += 1
+        
+        if count_fresh != fresh_to_rotten:
+            return -1
+        return max_time
+
