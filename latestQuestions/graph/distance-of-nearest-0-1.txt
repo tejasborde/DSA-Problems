@@ -68,3 +68,36 @@ class Solution:
                     visited[new_row][new_col] = True
         
         return distance_matrix
+
+Similar Question : https://leetcode.com/problems/map-of-highest-peak/submissions/1575350378/
+class Solution:
+    def highestPeak(self, isWater: List[List[int]]) -> List[List[int]]:
+        m = len(isWater)
+        n = len(isWater[0])
+        visited = [[False for _ in range(n)] for _ in range(m)]
+        height_matrix = [[0 for _ in range(n)] for _ in range(m)]
+
+        queue = deque()
+        for i in range(m):
+            for j in range(n):
+                if isWater[i][j] == 1:
+                    visited[i][j] = True
+                    queue.append((i,j,0))
+        
+        while queue:
+            row, col, height = queue.popleft()
+            height_matrix[row][col] = height
+
+            delta_row = [-1, 0, 1, 0]
+            delta_col = [0, 1, 0, -1]
+
+            for idx in range(4):
+                new_row = row + delta_row[idx]
+                new_col = col + delta_col[idx]
+
+                #Check if valid cell , append in queue and mark it as visited
+                if 0 <= new_row < m and 0 <= new_col < n and not visited[new_row][new_col]:
+                    queue.append((new_row, new_col, height + 1))
+                    visited[new_row][new_col] = True
+        
+        return height_matrix
