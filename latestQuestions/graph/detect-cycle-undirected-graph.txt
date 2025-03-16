@@ -9,23 +9,48 @@ class Solution:
         
         while queue:
             node, parent = queue.pop(0)
-            
             for neighbour in adj[node]:
                 if not visited[neighbour]:
                     queue.append([neighbour, node])
                     visited[neighbour] = True
                 elif parent != neighbour:
                     return True
-        
         return False
         
         
     #Function to detect cycle in an undirected graph.
 	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
-        visited = [False for _ in range(V)]
+	        visited = [False for _ in range(V)]
+	
+	        for i in range(V):
+	            if not visited[i]:
+	                if self.bfs(adj, i, visited):
+	                    return True
+	        return False
 
-        for i in range(V):
-            if not visited[i]:
-                if self.bfs(adj, i, visited):
+
+Using DFS
+
+from typing import List
+class Solution:
+    def dfs(self, adj, node, parent, visited):
+        
+        visited[node] = True
+        
+        for neigbour in adj[node]:
+            if not visited[neigbour]:
+                if self.dfs(adj, neigbour, node, visited):
                     return True
+            elif neigbour != parent:
+                return True
         return False
+        
+    #Function to detect cycle in an undirected graph.
+	def isCycle(self, V: int, adj: List[List[int]]) -> bool:
+	        visited = [False for _ in range(V)]
+	
+	        for i in range(V):
+	            if not visited[i]:
+	                if self.dfs(adj, i, -1, visited):
+	                    return True
+	        return False
