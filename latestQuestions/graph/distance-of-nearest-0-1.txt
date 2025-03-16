@@ -1,0 +1,70 @@
+https://leetcode.com/problems/01-matrix/
+
+from collections import deque
+class Solution:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        m = len(mat)
+        n = len(mat[0])
+        visited = [[False for _ in range(n)] for _ in range(m)]
+        distance_matrix = [[0 for _ in range(n)] for _ in range(m)]
+
+        queue = deque()
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j] == 0:
+                    visited[i][j] = True
+                    queue.append((i,j,0))
+        
+        while queue:
+            row, col, distance = queue.popleft()
+            distance_matrix[row][col] = distance
+
+            delta_row = [-1, 0, 1, 0]
+            delta_col = [0, 1, 0, -1]
+
+            for idx in range(4):
+                new_row = row + delta_row[idx]
+                new_col = col + delta_col[idx]
+
+                #Check if valid cell , append in queue and mark it as visited
+                if 0 <= new_row < m and 0 <= new_col < n and not visited[new_row][new_col]:
+                    queue.append((new_row, new_col, distance + 1))
+                    visited[new_row][new_col] = True
+        
+        return distance_matrix
+
+https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1
+from collections import deque
+class Solution:
+
+    #Function to find distance of nearest 1 in the grid for each cell.
+	def nearest(self, mat):
+	    m = len(mat)
+        n = len(mat[0])
+        visited = [[False for _ in range(n)] for _ in range(m)]
+        distance_matrix = [[0 for _ in range(n)] for _ in range(m)]
+
+        queue = deque()
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j] == 1:
+                    visited[i][j] = True
+                    queue.append((i,j,0))
+        
+        while queue:
+            row, col, distance = queue.popleft()
+            distance_matrix[row][col] = distance
+
+            delta_row = [-1, 0, 1, 0]
+            delta_col = [0, 1, 0, -1]
+
+            for idx in range(4):
+                new_row = row + delta_row[idx]
+                new_col = col + delta_col[idx]
+
+                #Check if valid cell , append in queue and mark it as visited
+                if 0 <= new_row < m and 0 <= new_col < n and not visited[new_row][new_col]:
+                    queue.append((new_row, new_col, distance + 1))
+                    visited[new_row][new_col] = True
+        
+        return distance_matrix
